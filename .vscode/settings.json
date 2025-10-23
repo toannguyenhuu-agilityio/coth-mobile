@@ -1,0 +1,39 @@
+{
+  // Format on save
+  "editor.formatOnSave": true,
+
+  // Set default formatter to Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Enable ESLint auto-fix on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // ESLint validation for JavaScript and TypeScript
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+  // Prettier configuration
+  "prettier.requireConfig": false,
+  "prettier.useEditorConfig": false,
+
+  // TypeScript/JavaScript specific
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

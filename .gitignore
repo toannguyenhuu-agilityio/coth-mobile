@@ -36,6 +36,7 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# google services key
+coth-68128-firebase-adminsdk-fbsvc-0c876a4ccf.json
+
 # generated native folders
-/ios
-/android

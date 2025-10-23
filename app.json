@@ -13,7 +13,16 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "entitlements": {
+        "com.apple.security.application-groups": ["group..expowidgets"],
+        "aps-environment": "development"
+      },
+      "infoPlist": {
+        "NSSupportsLiveActivities": false,
+        "NSSupportsLiveActivitiesFrequentUpdates": false
+      },
+      "bundleIdentifier": "com.coth.dev"
     },
     "android": {
       "adaptiveIcon": {
@@ -21,10 +30,63 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "package": "com.coth.dev",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "@bittingz/expo-widgets",
+        {
+          "ios": {
+            "src": "./widgets/ios",
+            "mode": "development",
+            "moduleDependencies": ["MyData.swift", "LogHandler.swift"],
+            "xcode": {
+              "configOverrides": {
+                "SWIFT_VERSION": "5.0"
+              }
+            }
+          },
+          "android": {
+            "src": "./widgets/android",
+            "packageName": "com.coth.dev",
+            "widgets": [
+              {
+                "name": "SampleWidget",
+                "resourceName": "@xml/sample_widget_info"
+              }
+            ]
+          }
+        }
+      ],
+      "expo-asset",
+      "expo-secure-store",
+      "expo-notifications"
+    ],
+    "extra": {
+      "eas": {
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "COTHWidgetExtension",
+                  "bundleIdentifier": "com.coth.dev.COTHWidgetExtension",
+                  "entitlements": {
+                    "com.apple.security.application-groups": ["group.com.coth.dev.expowidgets"],
+                    "aps-environment": "development"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "f3b9f805-4873-4f4a-a480-71cd346eedb9"
+      }
+    },
+    "owner": "kien.nguyen" 
   }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "404837941623",
+    "project_id": "coth-68128",
+    "storage_bucket": "coth-68128.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404837941623:android:b3f24d5a465084bc986172",
+        "android_client_info": {
+          "package_name": "com.coth.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_2I-614rrq_hBqcn3ttezD9D1tlwtOfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
