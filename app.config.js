@@ -70,8 +70,9 @@ export default ({ config }) => ({
             packageName: 'com.coth.dev',
             widgets: [
               {
-                name: 'SampleWidget',
+                name: 'StreakWidget',
                 resourceName: '@xml/sample_widget_info',
+                exported: true,
               },
             ],
           },

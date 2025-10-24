@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/widget_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sample_widget_background"
@@ -20,7 +20,6 @@
             android:gravity="start|center_vertical">
 
             <TextView
-                android:id="@+id/streak_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12"
@@ -72,7 +71,6 @@
                 android:textColor="#999999" />
 
             <FrameLayout
-                android:id="@+id/day_sunday"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -106,7 +104,6 @@
                 android:textColor="#999999" />
 
             <FrameLayout
-                android:id="@+id/day_monday"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -140,7 +137,6 @@
                 android:textColor="#999999" />
 
             <FrameLayout
-                android:id="@+id/day_tuesday"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -174,7 +170,6 @@
                 android:textColor="#999999" />
 
             <TextView
-                android:id="@+id/day_wednesday"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -202,7 +197,6 @@
                 android:textColor="#999999" />
 
             <TextView
-                android:id="@+id/day_thursday"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -230,7 +224,6 @@
                 android:textColor="#999999" />
 
             <TextView
-                android:id="@+id/day_friday"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -258,7 +251,6 @@
                 android:textColor="#999999" />
 
             <TextView
-                android:id="@+id/day_saturday"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
@@ -270,4 +262,3 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
-
