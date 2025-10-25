@@ -4,7 +4,7 @@ export default ({ config }) => ({
   ...config,
   expo: {
     name: 'COTH',
-    slug: 'COTH',
+    slug: 'coth-mobile',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icon.png',
@@ -14,8 +14,9 @@ export default ({ config }) => ({
       env: process.env.EXPO_PUBLIC_APP_ENV,
       apiUrl: process.env.EXPO_PUBLIC_API_URL,
       storybookEnabled: process.env.EXPO_PUBLIC_STORYBOOK_ENABLED,
+      sentryDsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
       eas: {
-        projectId: 'your-eas-project-id',
+        projectId: '78f3cb94-fad0-46e4-8401-b79de8a80dff',
       },
     },
 
@@ -75,6 +76,13 @@ export default ({ config }) => ({
               },
             ],
           },
+        },
+      ],
+      [
+        'sentry-expo',
+        {
+          organization: 'your-sentry-org',
+          project: 'your-sentry-project',
         },
       ],
       'expo-asset',

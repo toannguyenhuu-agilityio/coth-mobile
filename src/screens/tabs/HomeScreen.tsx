@@ -17,6 +17,7 @@ export const HomeScreen = () => {
       <Text style={styles.text}>Home Screen</Text>
       <Text>API URL: {apiUrl}</Text>
       <Text>Environment: {env}</Text>
+
       <ImagePickerExample />
       <CameraExample />
       <VideoPlayer />

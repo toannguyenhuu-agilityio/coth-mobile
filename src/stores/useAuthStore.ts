@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import * as SecureStore from 'expo-secure-store';
+import * as Sentry from 'sentry-expo';
 
 type User = {
   id: string;
@@ -29,6 +30,7 @@ export const useAuthStore = create<AuthState>((set, _get) => ({
       }
     } catch (error) {
       console.warn('Error loading user from SecureStore:', error);
+      Sentry.Native.captureException(error);
     } finally {
       set({ loading: false });
     }
