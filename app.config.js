@@ -79,10 +79,12 @@ export default ({ config }) => ({
         },
       ],
       [
-        'sentry-expo',
+        '@sentry/react-native/expo',
         {
-          organization: 'your-sentry-org',
-          project: 'your-sentry-project',
+          url: 'https://sentry.io/',
+          note: 'Use SENTRY_AUTH_TOKEN env to authenticate with Sentry.',
+          project: 'coth-mobile',
+          organization: 'asnet',
         },
       ],
       'expo-asset',
