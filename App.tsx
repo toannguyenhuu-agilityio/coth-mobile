@@ -6,6 +6,7 @@ import { RootNavigator } from '@/navigation';
 import { useAuthStore } from '@/stores';
 import Constants from 'expo-constants';
 import * as Sentry from '@sentry/react-native';
+import { loadAsync } from 'expo-font';
 
 // Initialize Sentry before anything else
 Sentry.init({
@@ -22,6 +23,19 @@ function App() {
 
   useEffect(() => {
     loadStoredUser();
+  }, []);
+
+  useEffect(() => {
+    async function prepare() {
+      await loadAsync({
+        'Akzidenz-Grotesk-Pro-Regular': require('./assets/fonts/akzidenzgroteskpro_regular.ttf'),
+        'Akzidenz-Grotesk-Pro-Medium': require('./assets/fonts/akzidenzgroteskpro_md.ttf'),
+        'Akzidenz-Grotesk-Pro-Bold': require('./assets/fonts/akzidenzgroteskpro_bold.ttf'),
+        'Akzidenz-Grotesk-Pro-Light': require('./assets/fonts/akzidenzgroteskpro_light.ttf'),
+      });
+    }
+
+    prepare();
   }, []);
 
   return (
