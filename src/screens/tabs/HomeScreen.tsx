@@ -30,6 +30,8 @@ export const HomeScreen = () => {
       <Text style={styles.lightText}>Light Font - Akzidenz Grotesk Pro Light</Text>
       <Text style={styles.mediumText}>Medium Font - Akzidenz Grotesk Pro Medium</Text>
       <Text style={styles.boldText}>Bold Font - Akzidenz Grotesk Pro Bold</Text>
+      <Text style={styles.robotoText}>Roboto Font - Sample Text</Text>
+      <Text style={styles.frankGothicText}>Welcome to Core of the Heart Daily</Text>
       <Text>API URL: {apiUrl}</Text>
       <Text>Environment: {env}</Text>
       <Button label="Try!" onPress={testSentry} />
@@ -63,5 +65,14 @@ const styles = StyleSheet.create({
   boldText: {
     fontSize: 18,
     fontFamily: typography.fontWeight.bold,
+  },
+  robotoText: {
+    fontSize: 18,
+    fontFamily: typography.fontFamily.robotoMono,
+  },
+  frankGothicText: {
+    fontSize: 18,
+    fontFamily: typography.fontFamily.frankGothic,
+    textTransform: 'uppercase',
   },
 });

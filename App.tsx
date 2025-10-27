@@ -32,6 +32,8 @@ function App() {
         'Akzidenz-Grotesk-Pro-Medium': require('./assets/fonts/akzidenzgroteskpro_md.ttf'),
         'Akzidenz-Grotesk-Pro-Bold': require('./assets/fonts/akzidenzgroteskpro_bold.ttf'),
         'Akzidenz-Grotesk-Pro-Light': require('./assets/fonts/akzidenzgroteskpro_light.ttf'),
+        'Roboto Mono': require('./assets/fonts/RobotoMono-VariableFont_wght.ttf'),
+        'Franklin Gothic': require('./assets/fonts/FranklinGothic.ttf'),
       });
     }
 

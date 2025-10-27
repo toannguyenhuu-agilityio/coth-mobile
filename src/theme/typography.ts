@@ -1,17 +1,17 @@
 export const typography = {
   fontFamily: {
     primary: 'Akzidenz-Grotesk Pro',
-    display: 'Franklin Gothic',
+    frankGothic: 'Franklin Gothic',
+    robotoMono: 'Roboto Mono',
   },
 
   fontWeight: {
-    light: 'Akzidenz-Grotesk-Pro-Light', // Akzidenz-Grotesk Pro Light
-    regular: 'Akzidenz-Grotesk-Pro-Regular', // Akzidenz-Grotesk Pro Regular
-    medium: 'Akzidenz-Grotesk-Pro-Medium', // Akzidenz-Grotesk Pro Medium
-    bold: 'Akzidenz-Grotesk-Pro-Bold', // Akzidenz-Grotesk Pro Bold
+    light: 'Akzidenz-Grotesk-Pro-Light',
+    regular: 'Akzidenz-Grotesk-Pro-Regular',
+    medium: 'Akzidenz-Grotesk-Pro-Medium',
+    bold: 'Akzidenz-Grotesk-Pro-Bold',
   },
 
-  // Font Sizes (from Figma design)
   fontSize: {
     xs: 10,
     sm: 11,

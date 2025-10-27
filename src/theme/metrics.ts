@@ -26,7 +26,7 @@ export const spacing = {
   66: BASE_UNIT * 16.5, // 66px
 
   // Semantic spacing names
-  xxs: 4,
+  '2xs': 4,
   xs: 8,
   sm: 12,
   md: 16,
