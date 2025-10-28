@@ -6,14 +6,10 @@ import * as Sentry from '@sentry/react-native';
 import { CameraExample, ImagePickerExample, VideoPlayer } from '@/components';
 
 // Env
-import Constants from 'expo-constants';
 import { Button } from 'src/components/common/Button';
+import { typography } from '@/theme/typography';
 
 export const HomeScreen = () => {
-  const { extra } = Constants.expoConfig ?? {};
-  const apiUrl = extra?.apiUrl;
-  const env = extra?.env;
-
   const testSentry = () => {
     console.log('testSentry');
     try {
@@ -25,11 +21,13 @@ export const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Home Screen</Text>
-      <Text>API URL: {apiUrl}</Text>
-      <Text>Environment: {env}</Text>
+      <Text style={styles.regularText}>Regular Font - Akzidenz Grotesk Pro</Text>
+      <Text style={styles.lightText}>Light Font - Akzidenz Grotesk Pro Light</Text>
+      <Text style={styles.mediumText}>Medium Font - Akzidenz Grotesk Pro Medium</Text>
+      <Text style={styles.boldText}>Bold Font - Akzidenz Grotesk Pro Bold</Text>
+      <Text style={styles.robotoText}>Roboto Font - Sample Text</Text>
+      <Text style={styles.frankGothicText}>Welcome to Core of the Heart Daily</Text>
       <Button label="Try!" onPress={testSentry} />
-      ;
       <ImagePickerExample />
       <CameraExample />
       <VideoPlayer />
@@ -42,8 +40,31 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    gap: 16,
   },
-  text: {
+  regularText: {
     fontSize: 18,
+    fontFamily: typography.fontWeight.regular,
+  },
+  lightText: {
+    fontSize: 18,
+    fontFamily: typography.fontWeight.light,
+  },
+  mediumText: {
+    fontSize: 18,
+    fontFamily: typography.fontWeight.medium,
+  },
+  boldText: {
+    fontSize: 18,
+    fontFamily: typography.fontWeight.bold,
+  },
+  robotoText: {
+    fontSize: 18,
+    fontFamily: typography.fontFamily.robotoMono,
+  },
+  frankGothicText: {
+    fontSize: 18,
+    fontFamily: typography.fontFamily.frankGothic,
+    textTransform: 'uppercase',
   },
 });

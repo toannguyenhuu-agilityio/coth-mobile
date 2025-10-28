@@ -27,7 +27,7 @@ export const ImagePickerExample = () => {
   };
 
   return (
-    <View style={{ padding: 10 }}>
+    <View>
       <Button title="Pick an image from gallery" onPress={pickImage} />
       {image && (
         <Image

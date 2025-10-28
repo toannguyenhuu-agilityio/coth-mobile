@@ -23,7 +23,7 @@ export const CameraExample = () => {
   };
 
   return (
-    <View style={{ padding: 10 }}>
+    <View>
       <Button title="Take a photo" onPress={openCamera} />
       {image && (
         <Image
