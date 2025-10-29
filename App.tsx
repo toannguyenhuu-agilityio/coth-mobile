@@ -3,7 +3,7 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '@/lib';
 import { RootNavigator } from '@/navigation';
-import { useAuthStore } from '@/stores';
+import { useAuthStore, useSubscriptionStore } from '@/stores';
 import Constants from 'expo-constants';
 import * as Sentry from '@sentry/react-native';
 import { loadAsync } from 'expo-font';
@@ -20,9 +20,14 @@ Sentry.init({
 
 function App() {
   const loadStoredUser = useAuthStore((state) => state.loadStoredUser);
+  const initSubscription = useSubscriptionStore((state) => state.initialize);
 
   useEffect(() => {
     loadStoredUser();
+  }, []);
+
+  useEffect(() => {
+    initSubscription();
   }, []);
 
   useEffect(() => {

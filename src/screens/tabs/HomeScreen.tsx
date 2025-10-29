@@ -1,70 +1,107 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import * as Sentry from '@sentry/react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { CameraExample, ImagePickerExample, VideoPlayer, LockedFeature } from '@/components';
 
-// Components
-import { CameraExample, ImagePickerExample, VideoPlayer } from '@/components';
-
-// Env
-import { Button } from 'src/components/common/Button';
+import { useSubscriptionStore } from '@/stores';
 import { typography } from '@/theme/typography';
 
+type RootStackParamList = {
+  ManageSubscriptions: undefined;
+};
+
+// simple mapping: which tier can use which component
+const FEATURE_ACCESS = {
+  ImagePickerExample: ['silver', 'gold'],
+  CameraExample: ['gold'],
+};
+
 export const HomeScreen = () => {
-  const testSentry = () => {
-    console.log('testSentry');
-    try {
-      throw new Error('Test Sentry Error from HomeScreen');
-    } catch (error) {
-      Sentry.captureException(error);
-    }
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const currentTier = useSubscriptionStore((s) => s.currentTier);
+
+  const canUse = (feature: keyof typeof FEATURE_ACCESS) =>
+    FEATURE_ACCESS[feature]?.includes(currentTier ?? 'bronze');
+
+  const goToManage = () => {
+    navigation.navigate('ManageSubscriptions');
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.regularText}>Regular Font - Akzidenz Grotesk Pro</Text>
-      <Text style={styles.lightText}>Light Font - Akzidenz Grotesk Pro Light</Text>
-      <Text style={styles.mediumText}>Medium Font - Akzidenz Grotesk Pro Medium</Text>
-      <Text style={styles.boldText}>Bold Font - Akzidenz Grotesk Pro Bold</Text>
-      <Text style={styles.robotoText}>Roboto Font - Sample Text</Text>
-      <Text style={styles.frankGothicText}>Welcome to Core of the Heart Daily</Text>
-      <Button label="Try!" onPress={testSentry} />
-      <ImagePickerExample />
-      <CameraExample />
-      <VideoPlayer />
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.welcomeText}>
+        Welcome Home{' '}
+        {currentTier === 'gold'
+          ? '👑 Gold Member'
+          : currentTier === 'silver'
+            ? '🥈 Silver Member'
+            : ''}
+      </Text>
+
+      <TouchableOpacity onPress={goToManage} style={styles.manageButton}>
+        <Text style={styles.manageText}>Manage Subscription</Text>
+      </TouchableOpacity>
+
+      {/* Bronze always accessible */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Bronze Feature</Text>
+        <Text style={styles.sectionDesc}>Always available</Text>
+      </View>
+
+      {/* Silver Feature */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Silver Feature</Text>
+        <LockedFeature locked={!canUse('ImagePickerExample')} onUpgradePress={goToManage}>
+          <ImagePickerExample />
+        </LockedFeature>
+      </View>
+
+      {/* Gold Feature */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Gold Feature</Text>
+        <LockedFeature locked={!canUse('CameraExample')} onUpgradePress={goToManage}>
+          <CameraExample />
+          <VideoPlayer />
+        </LockedFeature>
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    paddingVertical: 40,
+    paddingHorizontal: 20,
     alignItems: 'center',
     gap: 16,
   },
-  regularText: {
-    fontSize: 18,
-    fontFamily: typography.fontWeight.regular,
+  welcomeText: {
+    fontSize: 22,
+    fontFamily: typography.fontWeight.bold,
+    color: '#1F2937',
+    marginBottom: 16,
   },
-  lightText: {
-    fontSize: 18,
-    fontFamily: typography.fontWeight.light,
+  manageButton: {
+    backgroundColor: '#FFD700',
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginBottom: 20,
   },
-  mediumText: {
+  manageText: { fontWeight: '600', color: '#000' },
+  section: {
+    width: '100%',
+    marginBottom: 24,
+    borderWidth: 1,
+    borderColor: '#DDD',
+    borderRadius: 12,
+    padding: 12,
+  },
+  sectionTitle: {
     fontSize: 18,
     fontFamily: typography.fontWeight.medium,
+    marginBottom: 8,
+    color: '#111',
   },
-  boldText: {
-    fontSize: 18,
-    fontFamily: typography.fontWeight.bold,
-  },
-  robotoText: {
-    fontSize: 18,
-    fontFamily: typography.fontFamily.robotoMono,
-  },
-  frankGothicText: {
-    fontSize: 18,
-    fontFamily: typography.fontFamily.frankGothic,
-    textTransform: 'uppercase',
-  },
+  sectionDesc: { color: '#555' },
 });
