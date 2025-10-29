@@ -91,7 +91,6 @@ export const OnboardingSpiritualUnlockScreen = () => {
           borderWidth={1}
           borderRadius={16}
           padding={16}
-          style={styles.card}
         >
           <View style={styles.textContainer}>
             <Text style={styles.title}>Spiritual Unlock</Text>
@@ -197,9 +196,6 @@ const styles = StyleSheet.create({
     height: '100%',
   },
 
-  card: {
-    marginBottom: 40,
-  },
   textContainer: {
     gap: spacing[8],
   },
