@@ -26,5 +26,8 @@ module.exports = {
     'src/mocks/',
     'src/types/',
     'jest.config.js',
+    'src/storybook/',
+    `\\.stories\\.(ts|tsx|js|jsx)$`,
+    `\\.storybook/`,
   ],
 };

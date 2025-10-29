@@ -1,12 +1,21 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+// Navigators
 import { AppNavigator } from './AppNavigator';
 import { AuthNavigator } from './AuthNavigator';
+
+// Screens
 import { SplashScreen } from '@/screens/auth';
+
+// Stores
 import { useAuthStore } from '@/stores';
 
-const RootStack = createNativeStackNavigator();
+// Types
+import { RootStackParamList } from '@/types';
+
+const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 export const RootNavigator = () => {
   const { user, loading } = useAuthStore();

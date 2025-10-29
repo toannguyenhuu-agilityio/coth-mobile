@@ -1,22 +1,23 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import * as Sentry from '@sentry/react-native';
 
 // Components
-import { CameraExample, ImagePickerExample, VideoPlayer } from '@/components';
+import { CameraExample, ImagePickerExample, VideoPlayer, Button } from '@/components';
 
-// Env
-import { Button } from 'src/components/common/Button';
+// Theme
 import { typography } from '@/theme/typography';
 
+// Types
+import { RootStackParamList } from '@/types';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+
 export const HomeScreen = () => {
-  const testSentry = () => {
-    console.log('testSentry');
-    try {
-      throw new Error('Test Sentry Error from HomeScreen');
-    } catch (error) {
-      Sentry.captureException(error);
-    }
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+  const goToProfile = () => {
+    navigation.navigate('App', {
+      screen: 'Profile',
+    });
   };
 
   return (
@@ -27,7 +28,7 @@ export const HomeScreen = () => {
       <Text style={styles.boldText}>Bold Font - Akzidenz Grotesk Pro Bold</Text>
       <Text style={styles.robotoText}>Roboto Font - Sample Text</Text>
       <Text style={styles.frankGothicText}>Welcome to Core of the Heart Daily</Text>
-      <Button label="Try!" onPress={testSentry} />
+      <Button label="Go to Profile" onPress={goToProfile} />
       <ImagePickerExample />
       <CameraExample />
       <VideoPlayer />

@@ -1,8 +1,15 @@
 import React from 'react';
+
+// Navigators
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+// Screens
 import { HomeScreen, DailyDevoScreen, GospelBot, NotesList, Streams } from '@/screens/tabs';
 
-const Tab = createBottomTabNavigator();
+// Types
+import { TabParamList } from '@/types';
+
+const Tab = createBottomTabNavigator<TabParamList>();
 
 export const TabNavigator = () => {
   return (
