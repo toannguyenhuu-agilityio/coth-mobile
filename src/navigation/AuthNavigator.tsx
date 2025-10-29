@@ -10,7 +10,7 @@ import {
 } from '@/screens/onboarding';
 
 // Constants
-import { ROUTES } from '@/constants/routes';
+import { ROUTES } from '@/constants';
 
 const Stack = createNativeStackNavigator();
 

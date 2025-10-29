@@ -217,6 +217,7 @@ const styles = StyleSheet.create({
     fontFamily: typography.fontWeight.bold,
     fontSize: typography.fontSize.xl,
     color: colors.white[100],
+    lineHeight: typography.fontSize.xl * 1.263,
   },
 
   button: {
