@@ -15,6 +15,8 @@ export default ({ config }) => ({
       apiUrl: process.env.EXPO_PUBLIC_API_URL,
       storybookEnabled: process.env.EXPO_PUBLIC_STORYBOOK_ENABLED,
       sentryDsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
+      revenueCatApiKey: process.env.EXPO_PUBLIC_REVENUECAT_API_KEY,
+      revenueCatAppUserID: process.env.EXPO_PUBLIC_REVENUECAT_APP_USER_ID,
       eas: {
         projectId: '78f3cb94-fad0-46e4-8401-b79de8a80dff',
       },

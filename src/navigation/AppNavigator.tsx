@@ -1,7 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { TabNavigator } from './TabNavigator';
-import { ProfileScreen } from '@/screens/drawer/Profile';
+import { ManageSubscriptionsScreen, ProfileScreen } from '@/screens/drawer';
 // import EditProfileScreen from "../screens/drawer/Profile/EditProfileScreen";
 // import SettingsScreen from "../screens/drawer/Profile/SettingsScreen";
 // import BibleScreen from "../screens/drawer/Bible/BibleScreen";
@@ -16,6 +16,7 @@ export const AppNavigator = () => {
     <Drawer.Navigator screenOptions={{ headerShown: true }}>
       <Drawer.Screen name="MainTabs" component={TabNavigator} options={{ title: 'Home' }} />
       <Drawer.Screen name="Profile" component={ProfileScreen} />
+      <Drawer.Screen name="ManageSubscriptions" component={ManageSubscriptionsScreen} />
       {/* <Drawer.Screen name="EditProfile" component={EditProfileScreen} />
       <Drawer.Screen name="Settings" component={SettingsScreen} />
       <Drawer.Screen name="Bible" component={BibleScreen} />
