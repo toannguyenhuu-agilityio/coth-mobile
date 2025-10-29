@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   gradientOverlay: {
     position: 'absolute',
     left: -81,
-    top: 218,
+    top: 250,
     width: 438,
     height: 522,
   },
