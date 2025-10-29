@@ -1,25 +1,40 @@
-import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SplashScreen, LoginScreen, SignupScreen } from '@/screens/auth';
 import {
-  SplashScreen,
-  Intro1Screen,
-  Intro2Screen,
-  Intro3Screen,
-  LoginScreen,
-  SignupScreen,
-} from '@/screens/auth';
+  OnboardingBibleClassesScreen,
+  OnboardingDevotionalsScreen,
+  OnboardingLiveEventsScreen,
+  OnboardingGospelBotScreen,
+  OnboardingSpiritualToolsScreen,
+  OnboardingSpiritualUnlockScreen,
+} from '@/screens/onboarding';
+
+// Constants
+import { ROUTES } from '@/constants';
 
 const Stack = createNativeStackNavigator();
 
 export const AuthNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Splash" component={SplashScreen} />
-      <Stack.Screen name="Intro1" component={Intro1Screen} />
-      <Stack.Screen name="Intro2" component={Intro2Screen} />
-      <Stack.Screen name="Intro3" component={Intro3Screen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Signup" component={SignupScreen} />
+      <Stack.Screen name={ROUTES.SPLASH} component={SplashScreen} />
+      <Stack.Screen
+        name={ROUTES.ONBOARDING_BIBLE_CLASSES}
+        component={OnboardingBibleClassesScreen}
+      />
+      <Stack.Screen name={ROUTES.ONBOARDING_DEVOTIONALS} component={OnboardingDevotionalsScreen} />
+      <Stack.Screen name={ROUTES.ONBOARDING_LIVE_EVENTS} component={OnboardingLiveEventsScreen} />
+      <Stack.Screen name={ROUTES.ONBOARDING_GOSPEL_BOT} component={OnboardingGospelBotScreen} />
+      <Stack.Screen
+        name={ROUTES.ONBOARDING_SPIRITUAL_TOOLS}
+        component={OnboardingSpiritualToolsScreen}
+      />
+      <Stack.Screen
+        name={ROUTES.ONBOARDING_SPIRITUAL_UNLOCK}
+        component={OnboardingSpiritualUnlockScreen}
+      />
+      <Stack.Screen name={ROUTES.LOGIN} component={LoginScreen} />
+      <Stack.Screen name={ROUTES.SIGNUP} component={SignupScreen} />
     </Stack.Navigator>
   );
 };

@@ -1,13 +1,16 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+// Constants
+import { ROUTES } from '@/constants';
 
 export const SplashScreen = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('Intro1' as never);
+      navigation.navigate(ROUTES.ONBOARDING_BIBLE_CLASSES as never);
     }, 1500);
 
     return () => clearTimeout(timer);

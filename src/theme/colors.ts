@@ -8,6 +8,7 @@ export const colors = {
   accent: {
     1: '#7099A7',
     3: '#748B91',
+    4: '#829695',
     5: '#3FC9ED',
   },
 
@@ -20,6 +21,7 @@ export const colors = {
     30: 'rgba(255, 255, 255, 0.3)',
     20: 'rgba(255, 255, 255, 0.2)',
     10: 'rgba(255, 255, 255, 0.1)',
+    0: 'rgba(255, 255, 255, 0)',
   },
 
   // Black with opacity levels
@@ -29,10 +31,12 @@ export const colors = {
     50: 'rgba(0, 0, 0, 0.5)',
     30: 'rgba(0, 0, 0, 0.3)',
     20: 'rgba(0, 0, 0, 0.2)',
+    0: 'rgba(0, 0, 0, 0)',
   },
 
   // Gray Scale
   gray: {
+    50: '#D5D6D0',
     100: '#EAEAEA',
     200: '#D8D8D8',
     300: '#BABABA',
