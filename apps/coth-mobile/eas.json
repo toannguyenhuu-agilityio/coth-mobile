@@ -1,0 +1,38 @@
+{
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "development",
+        "EXPO_PUBLIC_SENTRY_DSN": "https://exampleDevDsn@o123.ingest.sentry.io/123"
+      },
+      "node": "20.19.4"
+    },
+    "staging": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "staging",
+        "EXPO_PUBLIC_SENTRY_DSN": "https://exampleStagingDsn@o123.ingest.sentry.io/456"
+      },
+      "node": "20.19.4"
+    },
+    "production": {
+      "distribution": "store",
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "production",
+        "EXPO_PUBLIC_SENTRY_DSN": "https://exampleProdDsn@o123.ingest.sentry.io/789"
+      },
+      "node": "20.19.4"
+    }
+  }
+}

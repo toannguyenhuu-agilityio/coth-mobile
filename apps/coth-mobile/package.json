@@ -1,0 +1,112 @@
+{
+  "name": "coth",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "prebuild": "expo prebuild --clean",
+    "build:android": "cd android && ./gradlew assembleRelease",
+    "build:ios": "cd ios && xcodebuild -workspace COTH.xcworkspace -scheme COTH -configuration Release",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "prettier --write .",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "storybook-generate": "sb-rn-get-stories",
+    "storybook:android": "EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo run:android",
+    "storybook:ios": "EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo run:ios"
+  },
+  "dependencies": {
+    "@bittingz/expo-widgets": "^3.0.2",
+    "@expo/vector-icons": "^14.1.0",
+    "@hookform/resolvers": "^5.2.2",
+    "@react-navigation/bottom-tabs": "^7.4.9",
+    "@react-navigation/drawer": "^7.5.10",
+    "@react-navigation/native": "^7.1.18",
+    "@react-navigation/native-stack": "^7.3.28",
+    "@sentry/react-native": "~6.14.0",
+    "@tanstack/react-query": "^5.90.5",
+    "dotenv": "^17.2.3",
+    "expo": "~53.0.10",
+    "expo-application": "~6.1.5",
+    "expo-asset": "~11.1.7",
+    "expo-constants": "~17.1.7",
+    "expo-dev-client": "~5.2.4",
+    "expo-device": "~7.1.4",
+    "expo-font": "~13.3.2",
+    "expo-image-picker": "~16.1.4",
+    "expo-linear-gradient": "~14.1.5",
+    "expo-secure-store": "~14.2.4",
+    "expo-status-bar": "~2.2.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-hook-form": "^7.65.0",
+    "react-native": "0.79.6",
+    "react-native-gesture-handler": "~2.24.0",
+    "react-native-keyboard-controller": "^1.19.2",
+    "react-native-purchases": "^9.6.0",
+    "react-native-reanimated": "~3.17.4",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.11.1",
+    "react-native-video": "^6.17.0",
+    "react-native-web": "^0.20.0",
+    "zod": "^4.1.12",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@gorhom/bottom-sheet": "^5.2.6",
+    "@react-native-async-storage/async-storage": "2.1.2",
+    "@react-native-community/cli": "^20.0.2",
+    "@react-native-community/cli-platform-ios": "^20.0.2",
+    "@react-native-community/datetimepicker": "8.4.1",
+    "@react-native-community/slider": "4.5.6",
+    "@storybook/addon-ondevice-actions": "^9.1.4",
+    "@storybook/addon-ondevice-controls": "^9.1.4",
+    "@storybook/react-native": "^9.1.4",
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^13.3.3",
+    "@types/jest": "^30.0.0",
+    "@types/react": "~19.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "babel-loader": "^8.4.1",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-native": "^5.0.0",
+    "fs-extra": "^11.3.2",
+    "husky": "*",
+    "jest": "~29.7.0",
+    "jest-expo": "~53.0.10",
+    "lint-staged": "*",
+    "metro": "^0.82.0",
+    "metro-config": "^0.82.0",
+    "metro-resolver": "^0.82.0",
+    "prettier": "*",
+    "react-native-svg": "15.11.2",
+    "storybook": "^9.1.13",
+    "typescript": "~5.8.3"
+  },
+  "private": true,
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": [
+          "@bittingz/expo-widgets",
+          "dotenv"
+        ]
+      }
+    }
+  }
+}
