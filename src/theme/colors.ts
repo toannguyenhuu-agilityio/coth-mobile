@@ -34,6 +34,7 @@ export const colors = {
   // Gray Scale
   gray: {
     100: '#EAEAEA',
+    150: '#D5D6D0',
     200: '#D8D8D8',
     300: '#BABABA',
     400: '#AAAAAA',
@@ -42,6 +43,11 @@ export const colors = {
     800: '#474747',
     900: '#2D2D2D',
     1000: '#1E1E1E',
+  },
+
+  // Neutral Colors (from Figma components)
+  neutral: {
+    200: '#E5E7EB',
   },
 
   // Semantic Colors - Error/Danger
@@ -85,6 +91,37 @@ export const colors = {
   internal: {
     mark: '#FF00D6',
     placeholder: '#D9D9D9',
+  },
+
+  // Semantic Token Categories (for better organization)
+  // Border colors - used for borders, dividers, strokes
+  border: {
+    default: 'rgba(255, 255, 255, 0.1)', // White/10%
+    light: 'rgba(255, 255, 255, 0.2)', // White/20%
+    medium: 'rgba(255, 255, 255, 0.5)', // White/50%
+    dark: 'rgba(0, 0, 0, 0.1)', // Black/10%
+    accent: '#3FC9ED', // Accent/5
+  },
+
+  // Text colors - used for text content
+  text: {
+    primary: '#FFFFFF', // White/100%
+    secondary: 'rgba(255, 255, 255, 0.8)', // White/80%
+    tertiary: 'rgba(255, 255, 255, 0.5)', // White/50%
+    disabled: '#AAAAAA', // Gray/400
+    accent: '#3FC9ED', // Accent/5
+    error: '#C62910', // Vermilion/100
+    placeholder: '#D9D9D9', // Internal/placeholder
+  },
+
+  // Background colors - used for backgrounds, cards, overlays
+  background: {
+    primary: '#000000', // Black/100%
+    secondary: '#1E1E1E', // Gray/1000
+    tertiary: '#2D2D2D', // Gray/900
+    overlay: 'rgba(0, 0, 0, 0.8)', // Black/80%
+    card: 'rgba(255, 255, 255, 0.1)', // White/10%
+    cardDark: 'rgba(0, 0, 0, 0.3)', // Black/30%
   },
 
   testColor: 'yellow',

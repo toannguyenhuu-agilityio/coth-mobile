@@ -42,6 +42,7 @@ export const borderRadius = {
   md: 12,
   lg: 20,
   xl: 38,
+  '3xl': 100,
   full: 9999, // Circle
 } as const;
 

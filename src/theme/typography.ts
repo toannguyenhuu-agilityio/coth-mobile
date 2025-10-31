@@ -28,12 +28,13 @@ export const typography = {
     '8xl': 100,
   },
 
-  // Line Heights
+  // Line Heights - Updated for better readability (minimum 1.3)
   lineHeight: {
-    tight: 1.1,
-    normal: 1.5,
-    relaxed: 1.75,
-    loose: 2,
+    tight: 1.3, // For headings (minimum for accessibility)
+    snug: 1.4, // For large headings
+    normal: 1.5, // Standard for body text (WCAG compliant)
+    relaxed: 1.75, // For long paragraphs
+    loose: 2, // For captions and notes
   },
 
   // Letter Spacing (from Figma)
