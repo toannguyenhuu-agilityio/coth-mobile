@@ -1,0 +1,37 @@
+{
+  "name": "coth-mobile-app",
+  "private": true,
+  "scripts": {
+    "android": "turbo run android",
+    "ios": "cd apps/coth-mobile/ios && pod install && turbo run ios",
+    "build:android": "turbo run build:android",
+    "build:ios": "turbo run build:ios",
+    "eas:build:ios": "turbo run eas:build:ios",
+    "eas:build:android": "turbo run eas:build:android",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "check-types": "turbo run check-types",
+    "prebuild": "turbo run prebuild",
+    "test": "turbo run test",
+    "storybook:android": "turbo run storybook:android",
+    "storybook:ios": "turbo run storybook:ios",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.8",
+    "typescript": "5.9.2",
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "lint-staged": "^16.2.5"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "yarn@1.22.22",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
