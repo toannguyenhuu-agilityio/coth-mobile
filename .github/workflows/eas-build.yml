@@ -89,7 +89,7 @@ jobs:
         if: always()
         run: |
           echo "🍏 Building iOS for ${{ steps.set-profile.outputs.profile }}"
-          yarn eas build --non-interactive --profile ${{ steps.set-profile.outputs.profile }} --platform ios
+          npx eas-cli build --non-interactive --profile ${{ steps.set-profile.outputs.profile }} --platform ios
         env:
           EXPO_PUBLIC_APP_ENV: ${{ steps.set-profile.outputs.env }}
           EXPO_PUBLIC_SENTRY_DSN: ${{ secrets.EXPO_PUBLIC_SENTRY_DSN }}
@@ -99,7 +99,7 @@ jobs:
         if: ${{ steps.set-profile.outputs.profile != 'development' }}
         run: |
           echo "🤖 Building Android for ${{ steps.set-profile.outputs.profile }}"
-          yarn eas build --non-interactive --profile ${{ steps.set-profile.outputs.profile }} --platform android
+          npx eas-cli build --non-interactive --profile ${{ steps.set-profile.outputs.profile }} --platform android
         env:
           EXPO_PUBLIC_APP_ENV: ${{ steps.set-profile.outputs.env }}
           EXPO_PUBLIC_SENTRY_DSN: ${{ secrets.EXPO_PUBLIC_SENTRY_DSN }}
