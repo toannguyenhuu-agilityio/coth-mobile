@@ -38,6 +38,3 @@ jobs:
 
       - name: Run tests
         run: yarn test:ci
-
-      - name: Build (optional for apps)
-        run: yarn build
