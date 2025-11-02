@@ -1,17 +1,45 @@
 import 'dotenv/config';
 
-export default ({ config }) => ({
-  ...config,
-  expo: {
+const APP_VARIANTS = {
+  development: {
+    name: 'COTH Dev',
+    slug: 'coth-mobile',
+    iosBundleId: 'com.coth.dev',
+    androidPackage: 'com.coth.dev',
+  },
+  staging: {
+    name: 'COTH Preview',
+    slug: 'coth-mobile',
+    iosBundleId: 'com.coth.staging',
+    androidPackage: 'com.coth.staging',
+  },
+  production: {
     name: 'COTH',
     slug: 'coth-mobile',
+    iosBundleId: 'com.coth',
+    androidPackage: 'com.coth',
+  },
+};
+
+export default ({ config = {} }) => {
+  const env = process.env.EXPO_PUBLIC_APP_ENV;
+  const variant = APP_VARIANTS[env];
+
+  if (!variant) {
+    throw new Error(`❌ Invalid EXPO_PUBLIC_APP_ENV: ${env}`);
+  }
+
+  return {
+    ...config,
+    name: variant.name,
+    slug: variant.slug,
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
     newArchEnabled: true,
     extra: {
-      env: process.env.EXPO_PUBLIC_APP_ENV,
+      env,
       apiUrl: process.env.EXPO_PUBLIC_API_URL,
       storybookEnabled: process.env.EXPO_PUBLIC_STORYBOOK_ENABLED,
       sentryDsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
@@ -36,7 +64,7 @@ export default ({ config }) => ({
         NSSupportsLiveActivities: false,
         NSSupportsLiveActivitiesFrequentUpdates: false,
       },
-      bundleIdentifier: 'com.coth.dev',
+      bundleIdentifier: variant.iosBundleId,
     },
 
     android: {
@@ -45,7 +73,7 @@ export default ({ config }) => ({
         backgroundColor: '#ffffff',
       },
       edgeToEdgeEnabled: true,
-      package: 'com.coth.dev',
+      package: variant.androidPackage,
     },
 
     web: {
@@ -59,7 +87,7 @@ export default ({ config }) => ({
         {
           ios: {
             src: './widgets/ios',
-            mode: 'development',
+            mode: env,
             moduleDependencies: ['MyData.swift', 'LogHandler.swift'],
             xcode: {
               configOverrides: {
@@ -69,7 +97,7 @@ export default ({ config }) => ({
           },
           android: {
             src: './widgets/android',
-            packageName: 'com.coth.dev',
+            packageName: variant.androidPackage,
             widgets: [
               {
                 name: 'SampleWidget',
@@ -92,5 +120,5 @@ export default ({ config }) => ({
       'expo-secure-store',
       'react-native-video',
     ],
-  },
-});
+  };
+};

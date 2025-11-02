@@ -1,4 +1,7 @@
 {
+  "cli": {
+    "version": ">= 9.0.0"
+  },
   "build": {
     "development": {
       "developmentClient": true,
@@ -6,44 +9,30 @@
       "android": {
         "buildType": "apk"
       },
-      "env": {
-        "EXPO_PUBLIC_APP_ENV": "development",
-        "EXPO_PUBLIC_SENTRY_DSN": "https://exampleDevDsn@o123.ingest.sentry.io/123"
-      },
       "node": "20.19.4"
     },
+
     "staging": {
       "distribution": "internal",
       "android": {
         "buildType": "apk"
       },
-      "env": {
-        "EXPO_PUBLIC_APP_ENV": "staging",
-        "EXPO_PUBLIC_SENTRY_DSN": "https://exampleStagingDsn@o123.ingest.sentry.io/456"
-      },
       "node": "20.19.4"
     },
+
     "production": {
       "distribution": "store",
       "android": {
         "buildType": "app-bundle"
       },
-      "env": {
-        "EXPO_PUBLIC_APP_ENV": "production",
-        "EXPO_PUBLIC_SENTRY_DSN": "https://exampleProdDsn@o123.ingest.sentry.io/789"
-      },
       "node": "20.19.4"
     },
+
     "ios-simulator": {
+      "extends": "development",
       "distribution": "internal",
       "ios": {
         "simulator": true
-      },
-      "env": {
-        "EXPO_PUBLIC_APP_ENV": "development",
-        "EXPO_PUBLIC_SENTRY_DSN": "https://exampleDevDsn@o123.ingest.sentry.io/123",
-        "EXPO_PUBLIC_SENTRY_AUTH_TOKEN": "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",
-        "SENTRY_DISABLE_AUTO_UPLOAD": "true"
       },
       "node": "20.19.4"
     }
