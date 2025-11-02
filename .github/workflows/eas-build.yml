@@ -1,22 +1,10 @@
 name: Build COTH App
 
 on:
-  push:
-    branches:
-      - main
-      - staging
-      - develop
-    paths:
-      - "apps/coth-mobile/**"
-      - "packages/ui/**"
-      - "packages/utils/**"
-      - ".github/workflows/eas-build.yml"
-  pull_request:
-    paths:
-      - "apps/coth-mobile/**"
-      - "packages/ui/**"
-      - "packages/utils/**"
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["CI Checks"]
+    types:
+      - completed
 
 jobs:
   eas-build:
@@ -86,20 +74,21 @@ jobs:
 
       # 7️⃣ Build iOS with EAS
       - name: iOS Build
-        if: always()
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
         run: |
           echo "🍏 Building iOS for ${{ steps.set-profile.outputs.profile }}"
           npx eas-cli build --non-interactive --profile ${{ steps.set-profile.outputs.profile }} --platform ios
         env:
           EXPO_PUBLIC_APP_ENV: ${{ steps.set-profile.outputs.env }}
           EXPO_PUBLIC_SENTRY_DSN: ${{ secrets.EXPO_PUBLIC_SENTRY_DSN }}
+          EXPO_PUBLIC_EAS_PROJECT_ID: ${{ secrets.EXPO_PUBLIC_EAS_PROJECT_ID }}
 
       # 8️⃣ Build Android with EAS
       - name: Android Build
-        if: ${{ steps.set-profile.outputs.profile != 'development' }}
         run: |
           echo "🤖 Building Android for ${{ steps.set-profile.outputs.profile }}"
           npx eas-cli build --non-interactive --profile ${{ steps.set-profile.outputs.profile }} --platform android
         env:
           EXPO_PUBLIC_APP_ENV: ${{ steps.set-profile.outputs.env }}
           EXPO_PUBLIC_SENTRY_DSN: ${{ secrets.EXPO_PUBLIC_SENTRY_DSN }}
+          EXPO_PUBLIC_EAS_PROJECT_ID: ${{ secrets.EXPO_PUBLIC_EAS_PROJECT_ID }}
