@@ -37,7 +37,7 @@ jobs:
         run: yarn lint
 
       - name: Run tests
-        run: yarn test -- --passWithNoTests
+        run: yarn test --passWithNoTests
 
       - name: Build (optional for apps)
         run: yarn build
