@@ -73,18 +73,18 @@ jobs:
             echo "env=development" >> $GITHUB_OUTPUT
           fi
 
-      # 7️⃣ Build iOS app (internal build first)
-      - name: 🍏 Build iOS app
+      # 7️⃣ Build iOS app
+      - name: 🍏 Build iOS Simulator
         run: |
           echo "Building iOS for ${{ steps.set-profile.outputs.profile }}"
           npx eas-cli build --non-interactive --profile ${{ steps.set-profile.outputs.profile }} --platform ios
         env:
           EXPO_PUBLIC_APP_ENV: ${{ steps.set-profile.outputs.env }}
-          EXPO_PUBLIC_SENTRY_DSN: ${{ secrets.EXPO_PUBLIC_SENTRY_DSN }}
+          EXPO_NO_CREDENTIALS: 1
           EXPO_PUBLIC_EAS_PROJECT_ID: ${{ secrets.EXPO_PUBLIC_EAS_PROJECT_ID }}
 
       # 8️⃣ Build Android app
-      - name: 🤖 Build Android app
+      - name: 🤖 Build Android Debug APK
         run: |
           echo "Building Android for ${{ steps.set-profile.outputs.profile }}"
           npx eas-cli build --non-interactive --profile ${{ steps.set-profile.outputs.profile }} --platform android
