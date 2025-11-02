@@ -3,20 +3,9 @@ name: Build COTH App
 on:
   push:
     branches:
-      - main
-      - staging
       - develop
-    paths:
-      - "apps/coth-mobile/**"
-      - "packages/ui/**"
-      - "packages/utils/**"
-      - ".github/workflows/eas-build.yml"
-  pull_request:
-    paths:
-      - "apps/coth-mobile/**"
-      - "packages/ui/**"
-      - "packages/utils/**"
-  workflow_dispatch:
+      - staging
+      - main
 
 jobs:
   eas-build:
@@ -28,10 +17,11 @@ jobs:
 
     env:
       EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-      EAS_PROJECT_ID: ${{ secrets.EXPO_PUBLIC_EAS_PROJECT_ID }}
+      EXPO_PUBLIC_EAS_PROJECT_ID: ${{ secrets.EXPO_PUBLIC_EAS_PROJECT_ID }}
+      EXPO_PUBLIC_SENTRY_DSN: ${{ secrets.EXPO_PUBLIC_SENTRY_DSN }}
 
     steps:
-      # 1️⃣ Checkout code from the repository
+      # 1️⃣ Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -64,10 +54,9 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      # 5️⃣ Install dependencies (using Yarn)
+      # 5️⃣ Install dependencies
       - name: Install dependencies
-        run: |
-          yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       # 6️⃣ Determine build profile and environment
       - name: Determine build profile
@@ -84,22 +73,22 @@ jobs:
             echo "env=development" >> $GITHUB_OUTPUT
           fi
 
-      # 7️⃣ Build iOS with EAS
-      - name: iOS Build
-        if: always()
+      # 7️⃣ Build iOS app (internal build first)
+      - name: 🍏 Build iOS app
         run: |
-          echo "🍏 Building iOS for ${{ steps.set-profile.outputs.profile }}"
-          yarn eas build --non-interactive --profile ${{ steps.set-profile.outputs.profile }} --platform ios
+          echo "Building iOS for ${{ steps.set-profile.outputs.profile }}"
+          npx eas-cli build --non-interactive --profile ${{ steps.set-profile.outputs.profile }} --platform ios
         env:
           EXPO_PUBLIC_APP_ENV: ${{ steps.set-profile.outputs.env }}
           EXPO_PUBLIC_SENTRY_DSN: ${{ secrets.EXPO_PUBLIC_SENTRY_DSN }}
+          EXPO_PUBLIC_EAS_PROJECT_ID: ${{ secrets.EXPO_PUBLIC_EAS_PROJECT_ID }}
 
-      # 8️⃣ Build Android with EAS
-      - name: Android Build
-        if: ${{ steps.set-profile.outputs.profile != 'development' }}
+      # 8️⃣ Build Android app
+      - name: 🤖 Build Android app
         run: |
-          echo "🤖 Building Android for ${{ steps.set-profile.outputs.profile }}"
-          yarn eas build --non-interactive --profile ${{ steps.set-profile.outputs.profile }} --platform android
+          echo "Building Android for ${{ steps.set-profile.outputs.profile }}"
+          npx eas-cli build --non-interactive --profile ${{ steps.set-profile.outputs.profile }} --platform android
         env:
           EXPO_PUBLIC_APP_ENV: ${{ steps.set-profile.outputs.env }}
           EXPO_PUBLIC_SENTRY_DSN: ${{ secrets.EXPO_PUBLIC_SENTRY_DSN }}
+          EXPO_PUBLIC_EAS_PROJECT_ID: ${{ secrets.EXPO_PUBLIC_EAS_PROJECT_ID }}

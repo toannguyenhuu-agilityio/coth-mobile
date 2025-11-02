@@ -15,7 +15,8 @@
     "test": "turbo run test",
     "storybook:android": "turbo run storybook:android",
     "storybook:ios": "turbo run storybook:ios",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test:ci": "turbo run test -- --passWithNoTests"
   },
   "devDependencies": {
     "husky": "^9.1.7",
